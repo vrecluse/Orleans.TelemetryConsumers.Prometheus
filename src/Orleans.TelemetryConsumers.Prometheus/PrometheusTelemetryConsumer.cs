@@ -129,7 +129,8 @@ namespace Orleans.TelemetryConsumers.Prometheus
 
         private string GetCategoryFromMetricName(string name)
         {
-            return name.Substring(0, name.IndexOf('.'));
+            var index = name.IndexOf('.');
+            return index < 0 ? "Orleans" : name.Substring(0, index);
         }
     }
 }
